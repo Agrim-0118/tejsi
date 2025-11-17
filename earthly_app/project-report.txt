@@ -1,0 +1,29 @@
+Project Report - Earthly (PWA conversion)
+=======================================
+
+Project: Earthly - Educational site about land degradation and related topics.
+Author: Agrim Sharma (student)
+
+Summary:
+- Converted original static website into a Progressive Web App (PWA).
+- Added manifest.json for installability and icons.
+- Implemented service-worker for offline support and caching strategy.
+- Made minor mobile-friendly improvements by injecting meta tags and install prompt JS.
+
+Files added:
+- manifest.json
+- service-worker.js
+- assets/icon-192.png
+- assets/icon-512.png
+- README.md
+
+Testing performed:
+- Verified HTML pages contain required meta tags and SW registration.
+- Created icons and placed them in assets folder.
+- Recommend serving over HTTP (localhost) and testing on an Android device or Chrome devtools (Application tab) for installability and offline mode.
+
+Next steps (optional):
+- Add responsive CSS improvements (hamburger nav, spacing) — I can patch your CSS if you want.
+- Add a small quiz module and bookmarks (localStorage).
+- Wrap with Capacitor for Android APK generation (I can provide step-by-step instructions).
+

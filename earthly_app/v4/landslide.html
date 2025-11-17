@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Landslide — Earthly</title><link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#13c8e0">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head><body>
+<header class="site-header"><nav class="nav container"><a class="brand" href="index.html">Earthly</a>
+<ul class="nav-links">
+<li><a href="index.html" >Home</a></li>
+<li><a href="land-degradation.html" >Land Degradation</a></li>
+<li><a href="soil-erosion.html" >Soil Erosion</a></li>
+<li><a href="desertification.html" >Desertification</a></li>
+<li><a href="landslide.html" class="active">Landslide</a></li>
+<li><a href="contact.html" >Contact</a></li>
+</ul><button class="nav-toggle">☰</button></nav></header>
+<main class="container page"><h1>Landslide</h1><p class="intro">Landslides are rapid downslope movements of rock and soil triggered by rain, earthquakes, or human activity.</p>
+<div class="card"><img src="assets/slide.jpg"><h3>About</h3><p>Landslides destroy infrastructure and lives. Deforestation and mining increase risks. Prevention includes slope stabilization, early warning systems, and careful land use planning.</p></div>
+<section class="interactive"><h2>Risk Estimator</h2><label>Vegetation:<select id="veg"><option>High</option><option>Medium</option><option>Low</option></select></label><label>Human:<select id="activity"><option>Low</option><option>Medium</option><option>High</option></select></label><button id="estimateBtn" class="btn">Estimate Risk</button><p id="estimateResult" class="result-box"></p></section>
+<section class="interactive"><h2>Erosion Sensitivity</h2><label>Rainfall:<input id="rain" type="range" min="0" max="100" value="40"><span id="rainVal">40</span></label><label>Slope:<input id="slope" type="range" min="0" max="60" value="20"><span id="slopeVal">20</span></label><button id="erosionBtn" class="btn">Check</button><p id="erosionResult" class="result-box"></p></section></main>
+<footer class="site-footer">© 2025 EcoGuardians</footer><script src="js/main.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+    .then(()=> console.log('Service Worker Registered'))
+    .catch(e=> console.log('SW register failed', e));
+}
+
+// Install prompt UI
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  const btn = document.createElement('button');
+  btn.textContent = 'Install App';
+  btn.style.position='fixed';
+  btn.style.right='16px';
+  btn.style.bottom='16px';
+  btn.style.padding='10px 14px';
+  btn.style.borderRadius='8px';
+  btn.style.border='none';
+  btn.style.boxShadow='0 2px 6px rgba(0,0,0,0.2)';
+  btn.style.background='#13c8e0';
+  btn.style.color='white';
+  document.body.appendChild(btn);
+  btn.addEventListener('click', async () => {
+    btn.remove();
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+  });
+});
+</script>
+</body></html>
